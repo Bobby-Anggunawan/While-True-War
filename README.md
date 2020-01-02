@@ -2,3 +2,13 @@
 
 <b>Note:</b> Game ini di buat dengan library <b>Pygame</b>. Jadi meskipun anda menginstall python, jika pygame tidak tersedia di komputer anda game ini tidak akan berjalan.
       Anda dapat mendownload pygame di link berikut: https://www.pygame.org/download.shtml
+
+<h1>Kontrol</h1>
+<p>
+      <ul>
+            <li>Tombol <b>esc</b> : Keluar game</li>
+            <li>Tombol <b>spasi</b> : Menyerang musuh</li>
+            <li>Tombol <b>panah kiri</b> : Bergerak ke kiri</li>
+            <li>Tombol <b>Panah kanan</b> : Bergerak ke kanan</li>
+      </ul>
+</p>
