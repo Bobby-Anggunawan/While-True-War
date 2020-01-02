@@ -263,7 +263,9 @@ mencetak_score=0
 
 #init untuk menu loop=================================================================================================================================================================
 background_menu=pygame.transform.scale(pygame.image.load("background/menu.png"), (lebar_layar, tinggi_layar)).convert()
-highscore=0
+my_file = open("score.txt", "r")
+highscore = int(my_file.read())
+my_file.close()
 
 
 
@@ -279,9 +281,10 @@ menu=True
 play=False
 pilih_karakter=False
 game_over_screen=False
+WTW=True
 #############################
 
-while (True):
+while (WTW==True):
     
     if menu==True:
         playpos=(int(lebar_layar/2)-int(lebar_layar/100*25/2), int(tinggi_layar-(tinggi_layar/3.5)))
@@ -302,6 +305,7 @@ while (True):
         
         for event in pygame.event.get():
             if event.type==pygame.QUIT:
+                WTW=False
                 pygame.quit()
                 
             if event.type == pygame.MOUSEBUTTONDOWN: #apa yang terjadi jika kita klik area layar
@@ -363,9 +367,11 @@ while (True):
         for event in pygame.event.get():
             if event.type==pygame.QUIT:
                 pygame.quit()
+                WTW=False
             if event.type == pygame.KEYDOWN:
                 if event.key == pygame.K_ESCAPE:
                     pygame.quit()
+                    WTW=False
             
             if event.type == pygame.MOUSEBUTTONDOWN:
                     mouse_pos= pygame.mouse.get_pos()
@@ -407,6 +413,7 @@ while (True):
                 score=0
             if event.type==pygame.QUIT:
                 pygame.quit()
+                WTW=False
     
     
     if play==True:
@@ -913,6 +920,9 @@ while (True):
             if nyawa<1 and frame_mati==9:
                 pygame.time.wait(200)
                 if score>highscore:
+                    my_file = open("score.txt", "w")
+                    my_file.write(str(score))
+                    my_file.close()
                     highscore=score
                 nyawa=100
                 step= int(lebar_layar/100*3)
@@ -927,10 +937,12 @@ while (True):
             for event in pygame.event.get():
                 if event.type==pygame.QUIT:
                     pygame.quit()
+                    WTW=False
                 
                 if event.type == pygame.KEYDOWN:
                     if event.key == pygame.K_ESCAPE:
                         pygame.quit()
+                        WTW=False
                     if event.key == pygame.K_LEFT:
                         arah="kiri"
                         momentum="bergerak"
